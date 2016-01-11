@@ -17,6 +17,8 @@ export default Component.extend({
   lng: null,
   latLng: null,
   zoom: 0,
+  heading: null,
+  pitch: 0,
   pov: null,
   height: null,
   width: null,
@@ -124,8 +126,13 @@ export default Component.extend({
      if (optionsProperties[i] !== null) {
        options[optionsKeys[i]] = optionsProperties[i];
      }
+     if(this.heading){
+      options['pov'] = {
+        'heading': this.heading,
+        'pitch': this.pitch
+      };
+     }
     }
-
     return options;
   },
 
